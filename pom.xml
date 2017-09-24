@@ -1,0 +1,127 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sst</groupId>
+	<artifactId>generico10</artifactId>
+	<version>${project.version}</version>
+	<packaging>pom</packaging>
+	<name>Generico10</name>
+	<description>Project model with jee7 with wildfly10	</description>
+	<modules>
+		<module>Utils</module>
+		<module>model</module>
+		<module>dao</module>
+		<module>services</module>
+		<module>web</module>
+
+	</modules>
+	<properties>
+		<project.version>0.0.1-SNAPSHOT</project.version>
+		<!-- Explicitly declaring the source encoding eliminates the following 
+			message: -->
+		<!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered 
+			resources, i.e. build is platform dependent! -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- JBoss dependency versions -->
+		<version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
+
+		<!-- Define the version of the JBoss BOMs we want to import to specify 
+			tested stacks. https://github.com/wildfly/boms/tree/master/wildfly-javaee7-with-tools 
+			https://mvnrepository.com/artifact/org.wildfly.bom/wildfly-javaee7/10.1.0.Final -->
+		<version.jboss.bom>10.0.0.Final</version.jboss.bom>
+		<version.org.jboss.resteasy>3.0.12.Final</version.org.jboss.resteasy>
+
+		<!-- other plugin versions -->
+		<version.compiler.plugin>3.1</version.compiler.plugin>
+		<version.surefire.plugin>2.16</version.surefire.plugin>
+		<version.war.plugin>2.5</version.war.plugin>
+
+		<!-- maven-compiler-plugin -->
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+
+		<!-- Spring security -->
+		<version.spring.security>4.2.3.RELEASE</version.spring.security>
+		<!-- utilities -->
+		<version.commons-collections>4.1</version.commons-collections>
+		<version.commons-lang3>3.6</version.commons-lang3>
+		<version.org.omnifaces>2.6.4</version.org.omnifaces>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.wildfly.bom</groupId>
+				<artifactId>wildfly-javaee7-with-tools</artifactId>
+				<scope>import</scope>
+				<type>pom</type>
+				<version>${version.jboss.bom}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.resteasy</groupId>
+				<artifactId>jaxrs-api</artifactId>
+				<version>${version.org.jboss.resteasy}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.omnifaces</groupId>
+				<artifactId>omnifaces</artifactId>
+				<version>${version.org.omnifaces}</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-core</artifactId>
+				<version>${version.spring.security}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-web</artifactId>
+				<version>${version.spring.security}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-config</artifactId>
+				<version>${version.spring.security}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-acl</artifactId>
+				<version>${version.spring.security}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-collections4</artifactId>
+				<version>${version.commons-collections}</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${version.commons-lang3}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.5</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+	<!-- <pluginManagement> <plugins> The Maven Surefire plugin tests your application. 
+		Here we ensure we are using a version compatible with Arquillian <plugin> 
+		<artifactId>maven-surefire-plugin</artifactId> <version>2.17</version> </plugin> 
+		The WildFly Maven Plugin deploys your war to a local WildFly container To 
+		use, set the JBOSS_HOME environment variable and run: mvn package wildfly:deploy 
+		<plugin> <groupId>org.wildfly.plugins</groupId> <artifactId>wildfly-maven-plugin</artifactId> 
+		<version>1.0.2.Final</version> </plugin> </plugins> </pluginManagement> -->
+	<repositories>
+		<repository>
+			<id>Jboss</id>
+			<url>repository.jboss.org/nexus/content/groups/public-jboss/</url>
+		</repository>
+	</repositories>
+</project>

@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=D:\git\genericow10\generico10\web\lib\sentinel-theme-2.1.2.jar -DgroupId=pt.brunohorta.sentinel -DartifactId=primefaces-sentinel -Dversion=2.1.2 -Dpackaging=jar
